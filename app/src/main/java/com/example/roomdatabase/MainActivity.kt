@@ -14,10 +14,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val database =
-            Room.databaseBuilder(applicationContext, UserRoomDb::class.java, "user-db").build();
+        val database =UserRoomDb.getInstance(this);
+
         GlobalScope.launch {
-            //database.userDao().insertUser(UserEntity(2,"raj-javiya","raj@gmail.com"))
+
+            database.userDao().insertUser(
+                UserEntity(
+                    3,
+                    "alpesh",
+                    "alpesh@gmail.com",
+                    arrayListOf("pateel samaja", "near telecome tower", "talada"),0
+                )
+            )
 
             //database.userDao().updateUser("RAJ JAVIYA", "javiyaraj4@gmail.com", "1")
             //database.userDao().updateUserData(UserEntity(1,"meet-javiya","meet@gmail.com"))
@@ -26,8 +34,8 @@ class MainActivity : AppCompatActivity() {
             //database.userDao().deleteUserData("2")
         }
 
-        database.userDao().getAllUsers().observe(this) {
-            Log.d("Practice", it.toString())
-        }
+//        database.userDao().getAllUsers().observe(this) {
+//            Log.d("Practice", it.toString())
+//        }
     }
 }

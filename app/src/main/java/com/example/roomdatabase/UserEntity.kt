@@ -9,5 +9,7 @@ data class UserEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
     val name: String,
-    val email: String
+    val email: String,
+    val address: ArrayList<String>,
+    val isActive: Int
 )
